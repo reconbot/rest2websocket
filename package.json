@@ -22,7 +22,8 @@
     "tap": "0.0.x"
   },
   "dependencies": {
-    "shoe": "0.0.4",
-    "express": "~3.0.0rc3"
+    "express": "~3.0.0rc3",
+    "socket.io": "~0.9.10",
+    "request": "~2.10.0"
   }
 }
