@@ -27,7 +27,7 @@ ResourceServer.prototype.connect = function(client){
   if(this.clients[id]){ return; }
   
   var sendData = function(data){
-    client.emit('data', data);
+    client.write(data);
   };
 
   var sub = (function(resource){
