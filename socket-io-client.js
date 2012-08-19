@@ -34,7 +34,7 @@ Client.prototype.write = function(data){
 };
 
 var ClientServer = function(io, resourceServer){
-  if (!(this instanceof ClientServer)) return new ClientServer(http);
+  if (!(this instanceof ClientServer)) return new ClientServer(io, resourceServer);
   EventEmitter2.apply(this, arguments);
   this.setMaxListeners(0); //unlimited
 

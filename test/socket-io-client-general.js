@@ -36,6 +36,15 @@ var fakeResourceServer = function(){
   return rs;
 };
 
+test('invocation tests', function(t){
+  t.plan(3);
+  var io = fakeSocketIO();
+  var rs = fakeResourceServer();
+  t.ok(Client);
+  t.ok(Client(io, rs));
+  t.ok(new Client(io,rs));
+});
+
 test('lets connect and disconnect', function(t){
   t.plan(2);
   var rs = fakeResourceServer();
