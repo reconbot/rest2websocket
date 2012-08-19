@@ -9,6 +9,7 @@ var util = require("util");
 */
 
 var ResourceServer = function(){
+  if (!(this instanceof ResourceServer)) return new ResourceServer();
   this.resources = {};
   EventEmitter2.apply(this, arguments);
   this.setMaxListeners(0); //unlimited

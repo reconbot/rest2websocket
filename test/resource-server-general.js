@@ -5,6 +5,7 @@ var EventEmitter2 = require('eventemitter2').EventEmitter2;
 test('startup', function(t){
   t.ok(ResourceServer,'event server was loaded');
   t.ok(new ResourceServer(), 'event server was created');
+  t.ok(ResourceServer(), 'event server was created');
   t.end();
 });
 
@@ -13,7 +14,7 @@ test('clients come and go',function(t){
   t.plan(4);
   var client = new EventEmitter2();
   client.id = 'bob';
-  var rs = new ResourceServer();
+  var rs = ResourceServer();
 
   rs.on('connect',function(c){
     t.equal(c, client, 'client connection event');
@@ -35,7 +36,7 @@ test('clients subscribe so many times', function(t){
   t.plan(2);
   var client = new EventEmitter2();
   client.id = 'bob';
-  var rs = new ResourceServer();
+  var rs = ResourceServer();
   rs.connect(client);
   var resource = 'http://fake.email.com/emails/44';
 
@@ -57,7 +58,7 @@ test('clients disconnect before unsubscribing', function(t){
   t.plan(2);
   var client = new EventEmitter2();
   client.id = 'bob';
-  var rs = new ResourceServer();
+  var rs = ResourceServer();
   rs.connect(client);
   var resource = 'http://fake.email.com/emails/44';
 
@@ -77,7 +78,7 @@ test('publish some data to a client',function(t){
   t.plan(1);
   var client = new EventEmitter2();
   client.id = 'bob';
-  var rs = new ResourceServer();
+  var rs = ResourceServer();
   rs.connect(client);
   var resource = 'http://fake.email.com/emails/44';
   var data = {
