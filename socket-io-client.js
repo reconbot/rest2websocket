@@ -1,5 +1,6 @@
 var socket = require('socket.io');
 var EventEmitter2 = require('eventemitter2').EventEmitter2;
+var util = require("util");
 
 /* map of events
   subscribe
@@ -11,6 +12,9 @@ var Client = function(socket){
   EventEmitter2.apply(this, arguments);
   this.setMaxListeners(0); //unlimited
   this.id = socket.id;
+  if(!this.id){
+    throw new Error('unable to determine socket.id');
+  }
   this.socket = socket;
   this.hook();
 };
@@ -29,20 +33,19 @@ Client.prototype.write = function(data){
   this.socket.emit('data', data);
 };
 
-var ClientServer = function(http, resourceServer){
+var ClientServer = function(io, resourceServer){
   if (!(this instanceof ClientServer)) return new ClientServer(http);
   EventEmitter2.apply(this, arguments);
   this.setMaxListeners(0); //unlimited
 
-  this.io = socket.listen(http);
+  this.io = io;
   this.rs = resourceServer;
   this.hook();
 };
 util.inherits(ClientServer, EventEmitter2);
 
 ClientServer.prototype.hook = function(){
-  var io = this.io;
-  io.sockets.on('connection', this.add.bind(this));
+  this.io.sockets.on('connection', this.add.bind(this));
 };
 
 ClientServer.prototype.add = function(socket){
