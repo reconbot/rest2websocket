@@ -1,4 +1,4 @@
-var EventEmitter2 = require('EventEmitter2').EventEmitter2;
+var EventEmitter2 = require('eventemitter2').EventEmitter2;
 var util = require("util");
 
 /* Catalog of events

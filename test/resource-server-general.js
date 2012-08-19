@@ -1,6 +1,6 @@
 var test = require('tap').test;
 var ResourceServer = require('../resource-server');
-var EventEmitter2 = require('EventEmitter2').EventEmitter2;
+var EventEmitter2 = require('eventemitter2').EventEmitter2;
 
 test('startup', function(t){
   t.ok(ResourceServer,'event server was loaded');
