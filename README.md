@@ -2,8 +2,6 @@
 
 I want to use websockets on an app that has a perl cgi backend. That stack wont do it easily so this is my workaround. Clients can subscribe to updates, and servers can post updates, and this app can poll for updates if there are subscribed clients. 
 
-https://secure.travis-ci.org/reconbot/rest2websocket.png
-
 [![Build Status](https://secure.travis-ci.org/reconbot/rest2websocket.png)](http://travis-ci.org/reconbot/rest2websocket)
 
 ## BEHAVIOR
